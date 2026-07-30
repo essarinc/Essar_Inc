@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essar Inc. - The Green Ledger: We Don't Claim Sustainability, We Prove It</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link rel="icon" type="image/png" href="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/favicon.svg" />
+<link rel="shortcut icon" href="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Essar Inc." />
+<link rel="manifest" href="site.webmanifest" />
+<meta name="theme-color" content="#0b1f3a">
+
+<meta name="description" content="Every Essar Inc. video ships with a transparent, ISO 14067-aligned Green Ledger - exact energy consumption, data transfer, and CO2e metrics, ready for Scope 3 compliance and external audit.">
+<link rel="canonical" href="https://essarinc.com/green-ledger.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Green Ledger - Essar Inc.'s Audit-Ready Sustainability Methodology">
+<meta property="og:description" content="ISO 14067-aligned carbon tracking, node energy metrics, and self-attested verification for every project we deliver.">
+<meta property="og:image" content="https://essarinc.com/og-green-ledger.png">
+<meta property="og:url" content="https://essarinc.com/green-ledger.html">
+<meta property="og:site_name" content="Essar Inc.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Green Ledger - Essar Inc.'s Audit-Ready Sustainability Methodology">
+<meta name="twitter:description" content="Transparent kWh, GB, and kgCO2e metrics mapped to ISO 14067 for every video we deliver.">
+<meta name="twitter:image" content="https://essarinc.com/og-green-ledger.png">
+
+<style>
+  :root{
+    --bg: #0a100c;
+    --bg-panel: #0e1712;
+    --bg-panel-2: #0c140f;
+    --green: #8fd14a;
+    --green-bright: #a6e05c;
+    --green-dim: #3f5a34;
+    --gold: #d9a94f;
+    --gold-dim: #8a743f;
+    --text: #e9e7de;
+    --text-dim: #a7a89e;
+    --line: #26362a;
+    --line-gold: #6b5a30;
+
+      /* shared footer tokens */
+    --obsidian: #0B0C10;
+    --off-white: #F5F7F5;
+    --muted-silver: #B9C0C7;
+    --hairline-dark: rgba(245, 247, 245, 0.14);
+    --warm-gold: #D4AF37;
+    --gutter: 24px;
+    --radius-sm: 6px;
+    --header-h: 76px;
+    --content-max: 1180px;
+
+    --font-serif: "Playfair Display", "Georgia", serif;
+    --font-sans: "Inter", "Montserrat", -apple-system, sans-serif;
+
+  }
+  @media (min-width: 768px){ :root{ --gutter: 40px; } }
+@media (min-width: 1024px){ :root{ --gutter: 64px; } }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: radial-gradient(ellipse 1200px 700px at 15% 0%, #10190f 0%, var(--bg) 45%), var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.55;
+     -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  }
+
+  /* Allow selection in form fields and the footer tooltip
+   (email / phone number visitors need to copy) */
+input, textarea,
+.tooltip, .tooltip * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ============================================
+     SHARED SITE HEADER — ESSAR INC.
+     Same file/markup goes on every page.
+     ============================================ */
+.wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}  
+
+/* ============================================================
+   HEADER / NAVIGATION — dark bar on every page
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--obsidian);
+  border-bottom: 1px solid rgba(245, 247, 245, 0.08);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2F3194;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+.brand svg { height: 26px; width: auto; flex-shrink: 0; }
+@media (min-width: 1024px) { .brand svg { height: 30px; width: auto; } }
+
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--hairline-dark);
+  border-radius: var(--radius-sm);
+  color: var(--off-white);
+}
+.nav-toggle svg { width: 20px; height: 20px; }
+
+.primary-nav {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  background: var(--obsidian);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px var(--gutter) 32px;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  overflow-y: auto;
+}
+.primary-nav.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.primary-nav a {
+  color: var(--muted-silver);
+  font-size: 1.05rem;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--hairline-dark);
+  letter-spacing: 0.02em;
+}
+.primary-nav a.is-active { color: var(--warm-gold); }
+
+@media (min-width: 1024px) {
+  .nav-toggle { display: none; }
+  .primary-nav {
+    position: static;
+    inset: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+    padding: 0;
+    background: transparent;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    overflow: visible;
+  }
+  .primary-nav a {
+    font-size: 0.92rem;
+    padding: 6px 2px;
+    border-bottom: none;
+    position: relative;
+  }
+  .primary-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -4px;
+    height: 1px;
+    background: var(--warm-gold);
+    transition: right 0.25s ease;
+  }
+  .primary-nav a:hover::after,
+  .primary-nav a.is-active::after { right: 0; }
+  .primary-nav a.is-active { color: var(--warm-gold); }
+}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    display:grid; grid-template-columns: 0.95fr 1.05fr; gap: 70px;
+    padding: 70px 0;
+    align-items:center;
+  }
+  .formula-box{
+    background: linear-gradient(180deg, rgba(143,209,74,0.05), rgba(143,209,74,0.015));
+    border: 1px solid var(--line);
+    padding: 46px 30px;
+    text-align:center;
+  }
+  .formula{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--green-bright);
+    font-size: 27px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+  .formula .frac{ display:inline-block; vertical-align:middle; text-align:center; margin: 0 4px;}
+  .formula .frac .num{ display:block; border-bottom: 1.2px solid var(--green-bright); padding: 0 6px 3px; }
+  .formula .frac .den{ display:block; padding: 4px 6px 0; }
+  .formula .brace{ font-size: 46px; font-weight: 300; vertical-align: middle; color: var(--green-bright); }
+  .eq-savings{
+    margin-top: 26px;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--green-bright);
+    font-size: 21px;
+    letter-spacing: 0.5px;
+  }
+  .hero-right h1{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 42px;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+  }
+  .gold-rule{ width:64px; height:1.5px; background: var(--gold); margin: 22px 0; opacity:0.8;}
+  .hero-right p{ color: var(--text-dim); font-size: 15.5px; max-width: 480px; font-weight:300; }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: 30px;
+    color: var(--text);
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 34px;
+  }
+  section{ padding: 60px 0; }
+
+  /* ---------- TABLE ---------- */
+  .table{
+    border: 1px solid var(--line);
+  }
+  .table-head{
+    display:grid; grid-template-columns: 1.1fr 1.3fr 1.3fr;
+    background: rgba(255,255,255,0.015);
+    border-bottom: 1px solid var(--line);
+  }
+  .table-head div{
+    padding: 18px 26px;
+    font-size: 13.5px;
+    letter-spacing:0.3px;
+    color: var(--text-dim);
+    font-weight:400;
+  }
+  .table-head div:last-child{ color: var(--green); }
+  .row{
+    display:grid; grid-template-columns: 1.1fr 1.3fr 1.3fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:last-child{ border-bottom:none; }
+  .row > div{ padding: 26px; font-size: 14.5px; }
+  .stage{ display:flex; gap:16px; align-items:flex-start; }
+  .stage svg{ width:26px; height:26px; flex-shrink:0; color: var(--gold); stroke: var(--gold); }
+  .stage .label{ font-weight:500; color: var(--text); font-size:15px; line-height:1.35;}
+  .row ul{ list-style:none; color: var(--text-dim); font-size:14.5px; }
+  .row ul li{ position:relative; padding-left:16px; margin-bottom:8px; }
+  .row .conv li::before{ content:"•"; position:absolute; left:0; color: var(--text-dim); }
+  .row .opt{ color: var(--text); }
+  .row .opt li::before{ content:"•"; position:absolute; left:0; color: var(--green); }
+  .col-opt{ background: rgba(143,209,74,0.03); }
+
+  /* ---------- LEDGER SECTION ---------- */
+  .ledger-grid{ display:grid; grid-template-columns: 1fr 1.55fr; gap: 50px; }
+  .ledger-item{ display:flex; gap: 18px; margin-bottom: 34px; }
+  .ledger-icon{
+    width:44px; height:44px; flex-shrink:0;
+    border: 1px solid var(--green-dim);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .ledger-icon svg{ width:20px; height:20px; color: var(--green); stroke:var(--green); }
+  .ledger-item h4{ color: var(--green); font-size:14.5px; font-weight:500; margin-bottom:6px;}
+  .ledger-item p{ color: var(--text-dim); font-size:13.8px; font-weight:300; }
+
+  .ledger-card{
+    border: 1px solid var(--gold-dim);
+    background: linear-gradient(180deg, rgba(217,169,79,0.035), rgba(0,0,0,0));
+    padding: 26px 28px 28px;
+  }
+  .ledger-card-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; }
+  .ledger-card-head .lc-title{ display:flex; align-items:center; gap:8px; font-size:13px; letter-spacing:0.5px; color:var(--text);}
+  .ledger-card-head .lc-title svg{ width:15px; height:15px; color:var(--green); stroke:var(--green);}
+  .ledger-card-head .lc-id{ font-size:12px; color: var(--text-dim); }
+
+  .stat-row{ display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-bottom:16px; }
+  .stat-box{ border:1px solid var(--line); padding:16px 18px; }
+  .stat-box .stat-label{ font-size:11.5px; color:var(--text-dim); margin-bottom:10px; line-height:1.3;}
+  .stat-box .stat-value{ font-size:22px; font-weight:400; display:flex; align-items:center; gap:8px; }
+  .stat-box svg{ width:15px; height:15px; color:var(--green); stroke:var(--green);}
+
+  .emissions-row{ display:grid; grid-template-columns: 1fr 1.5fr; gap:14px; margin-bottom:16px; }
+  .emissions-box{ border:1px solid var(--line); padding:16px 18px; }
+  .emissions-box .stat-label{ font-size:11.5px; color:var(--text-dim); margin-bottom:10px; }
+  .emissions-box .stat-value{ font-size:26px; color: var(--green-bright); font-weight:400; }
+  .aligned-box{ border:1px solid var(--line); padding:14px 16px; display:flex; flex-direction:column; }
+  .aligned-label{ font-size:10.5px; letter-spacing:0.5px; color:var(--text-dim); margin-bottom:10px; }
+  .bars{ display:flex; align-items:flex-end; gap:3px; height: 36px; }
+  .bars div{ width:6px; background: var(--green-dim); }
+  .bars div.hi{ background: var(--green); }
+
+  .details-row{ display:grid; grid-template-columns: 1.4fr 1fr; gap:14px; }
+  .details-box{ border:1px solid var(--line); padding:16px 18px; font-size:12.8px; }
+  .details-box .drow{ display:flex; justify-content:space-between; padding:6px 0; color: var(--text-dim); border-bottom: 1px dashed rgba(255,255,255,0.05);}
+  .details-box .drow:last-child{ border-bottom:none; }
+  .details-box .drow span:last-child{ color: var(--text); }
+
+  .verify-box{ border:1px solid var(--gold-dim); padding:16px 14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .verify-box .vt{ font-size:10.5px; letter-spacing:0.7px; color: var(--gold); margin-bottom:10px; }
+  .seal{ width:56px; height:56px; border:1.3px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; letter-spacing:1px; color:var(--gold); text-align:center; margin-bottom:10px; font-family:'Cormorant Garamond',serif; }
+  .verify-box p{ font-size:10.5px; color:var(--text-dim); line-height:1.4; margin-bottom:8px;}
+  .sig{ font-family:'Cormorant Garamond', serif; font-style:italic; color: var(--gold); font-size:15px; }
+  .sig-sub{ font-size:9.5px; color:var(--text-dim); letter-spacing:0.4px; margin-top:2px;}
+
+  .dl-btn{
+    margin-top:18px; width:100%; padding:13px; border:1px solid var(--green-dim);
+    background: rgba(143,209,74,0.04); color: var(--green); font-size:13px;
+    display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; letter-spacing:0.3px;
+  }
+  a.dl-btn{ text-decoration:none; box-sizing:border-box; }
+  .dl-btn svg{ width:14px; height:14px; stroke: var(--green); }
+
+  /* ---------- GUARANTEE ---------- */
+  .guarantee{
+    border: 1px solid var(--gold-dim);
+    padding: 42px 46px;
+    display:flex; gap: 30px; align-items:flex-start;
+    margin: 0 40px;
+  }
+  .guarantee svg{ width:52px; height:52px; color:var(--gold); stroke:var(--gold); flex-shrink:0; margin-top:4px;}
+  .guarantee h3{ font-family:'Cormorant Garamond', serif; color: var(--gold); font-size:26px; font-weight:600; margin-bottom:14px; }
+  .gold-rule-thin{ width:50px; height:1px; background:var(--gold-dim); margin-bottom:16px; }
+  .guarantee p{ color: var(--text-dim); font-size:14.5px; margin-bottom:12px; max-width: 720px; }
+
+  /* ---------- FOOTER CTAs ---------- */
+  .cta-grid{ display:grid; grid-template-columns:1fr 1fr; gap: 18px; padding: 44px 0 54px; }
+  .cta-box{ position:relative; padding: 10px 22px; min-height:48px; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; text-decoration:none; color:inherit; }
+  .cta-box.dark{ background: linear-gradient(135deg, #0d1610, #060907); border:1px solid var(--line);}
+  .cta-box.green{ background: linear-gradient(135deg, #1c3318, #0e1a0c); border:1px solid var(--green-dim);}
+  .cta-box h4{ font-family:'Cormorant Garamond', serif; font-size: 21px; font-weight:500; line-height:1.25; color:var(--text); }
+  .cta-box h4 .accent{ color: var(--green-bright); display:block; }
+  .cta-box .arrow{ margin-top: 10px; color: var(--gold); font-size:18px; }
+  .cta-icon{ position:absolute; right:12px; bottom:8px; opacity:0.2; width:32px; height:32px; color: var(--green); stroke:var(--green); }
+
+
+  /* ============================================================
+   BUTTONS — matches index.html exactly
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 15px 26px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  width: max-content;
+  max-width: 100%;
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.btn-liquid-sage {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-color: var(--sage-green, #5FAD56);
+  color: var(--sage-green, #5FAD56);
+  background: transparent;
+}
+.btn-liquid-sage:active {
+  box-shadow: inset 3px 3px 10px rgba(0,0,0,0.35);
+}
+.btn-liquid-sage::before,
+.btn-liquid-sage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  border-radius: 50%;
+  display: block;
+  z-index: -1;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.btn-liquid-sage::before {
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(95, 173, 86, 0.15);
+}
+.btn-liquid-sage::after {
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: var(--sage-green, #5FAD56);
+}
+.btn-liquid-sage:hover {
+  color: var(--obsidian);
+  border-color: var(--sage-green, #5FAD56);
+}
+.btn-liquid-sage:hover::before {
+  top: -35%;
+  background-color: var(--sage-green, #5FAD56);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+.btn-liquid-sage:hover::after {
+  top: -45%;
+  background-color: var(--sage-green, #5FAD56);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+
+@media (max-width: 900px){
+    .hero{ grid-template-columns:1fr; }
+    .table-head, .row{ grid-template-columns:1fr; }
+    .ledger-grid{ grid-template-columns:1fr; }
+    .cta-grid{ grid-template-columns:1fr; }
+    .guarantee{ flex-direction:column; margin:0; }
+    .wrap{ padding:0 22px; }
+
+
+
+    /* Keep the 3-column comparative table intact on tablet/phone.
+       Shrink text/padding to fit, and allow horizontal scroll as a
+       safety net on very narrow screens instead of ever stacking. */
+    .table{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-head, .row{ grid-template-columns: 140px 1fr 1fr; min-width: 560px; }
+    .table-head div{ padding: 12px 14px; font-size: 11.5px; }
+    .row > div{ padding: 16px 14px; font-size: 12.5px; }
+    .stage{ gap: 10px; }
+    .stage svg{ width: 20px; height: 20px; }
+    .stage .label{ font-size: 12.5px; }
+    .row ul li{ margin-bottom: 6px; }
+
+
+    /* Regroup the 4 stat boxes into a 2x2 grid on tablet + phone:
+       Row 1: Energy Consumed | Server Run-Time
+       Row 2: Data Transferred | Total Emissions
+       ISO chart drops to its own full-width row below */
+    .stats-block{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .stats-block .stat-row,
+    .stats-block .emissions-row{ display:contents; }
+    .stats-block .aligned-box{ grid-column: 1 / -1; }
+  }
+
+  .compliance-footer {
+  border-top: 1px solid var(--hairline-dark);
+  padding: 26px var(--gutter) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  color: var(--muted-silver);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  background: var(--obsidian);
+}
+.compliance-footer .foot-brand { display: flex; align-items: center; gap: 10px; }
+.compliance-footer .foot-brand img { height: 22px; }
+@media (min-width: 768px) {
+  .compliance-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* ============================================================
+   SITE FOOTER — full version with CTA, link columns, socials
+   ============================================================ */
+.site-footer {
+  background: var(--obsidian);
+  border-top: 1px solid var(--hairline-dark);
+  padding-top: 56px;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+@media (min-width: 1024px) {
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-cta-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .footer-cta-wrap {
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+@media (min-width: 640px) {
+  .footer-links { grid-template-columns: repeat(3, 1fr); gap: 48px; }
+}
+@media (min-width: 1024px) {
+  .footer-links {
+    padding-left: 48px;
+    border-left: 1px solid var(--hairline-dark);
+    justify-self: end;
+  }
+}
+
+.footer-col h4 {
+  color: var(--off-white);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block;
+  color: var(--muted-silver);
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover { color: var(--sage-green-soft, #8FCB86); }
+
+.footer-social-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--hairline-dark);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+@media (min-width: 768px) {
+  .footer-social-row { justify-content: center; gap: 40px; }
+}
+
+/* ============================================================
+   FOOTER SOCIAL — tooltip + layered hover icons
+   ============================================================ */
+.tooltip-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 20;
+  width: max-content;
+}
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: auto;
+}
+
+.tooltip .profile {
+  background: var(--charcoal-panel, #17191D);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px 15px;
+  padding: 12px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.tooltip .about {
+  color: var(--muted-silver);
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+.tooltip .label {
+  color: var(--gold-bright, #E8C868);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 64px;
+  text-decoration: none;
+}
+
+.layer {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.social-icon:hover .layer { transform: rotate(-20deg) skew(10deg); }
+
+.layer span {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--sage-green, #5FAD56);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.social-icon:hover .layer span:nth-child(1) { opacity: 0.15; }
+.social-icon:hover .layer span:nth-child(2) { opacity: 0.35; transform: translate(3px, -3px); }
+.social-icon:hover .layer span:nth-child(3) { opacity: 0.6;  transform: translate(6px, -6px); }
+.social-icon:hover .layer span:nth-child(4) { opacity: 1;    transform: translate(9px, -9px); }
+
+.layer .icon-circle {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--sage-green, #5FAD56);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--sage-green, #5FAD56);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.social-icon:hover .icon-circle {
+  background: var(--sage-green, #5FAD56);
+  color: var(--obsidian);
+}
+.icon-circle svg { width: 20px; height: 20px; }
+
+.icon-label {
+  font-size: 0.76rem;
+  color: var(--muted-silver);
+  text-align: center;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 24px 12px 40px;
+  color: var(--muted-silver);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.footer-bottom .foot-brand { display: flex; align-items: center; gap: 10px; }
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-social-row { justify-content: center; gap: 16px 20px; }
+  .social-icon { width: 22%; }
+  .icon-circle { width: 46px; height: 46px; }
+}
+
+
+/* ============================================================
+   SCROLL REVEAL + HOVER LIFT — shared across all 5 pages
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-zoom.reveal-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-zoom { opacity: 1; transform: none; transition: none; }
+}
+
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+</style>
+</head>
+<body data-page="green-ledger">
+
+  <!-- ============================================
+       SHARED SITE HEADER — paste this exact block,
+       unchanged, on all 5 pages (Home / Workflow /
+       Green Ledger / About Us / Contact).
+       ============================================ -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+  <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" class="brand-logo">
+    <polygon points="237,47 185,10 75,97 128,135" fill="#2F3194"/>
+    <polygon points="238,147 185,111 76,200 127,237" fill="#2F3194"/>
+    <polygon points="186,212 141,250 190,286 236,248" fill="#EC1B24"/>
+  </svg>
+  ESSAR INC.
+</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html">Home</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="green-ledger.html" class="is-active">Green Ledger</a>
+      <a href="portfolio.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero reveal-zoom">
+    <div class="formula-box">
+      <div class="formula">
+        <span class="brace">{</span>
+        <span class="frac"><span class="num">E<sub>baseline</sub> - E<sub>digital</sub></span><span class="den">E<sub>baseline</sub></span></span>
+        <span class="brace">}</span>
+        × 100%
+      </div>
+      <div class="eq-savings">= % Carbon Savings</div>
+    </div>
+    <div class="hero-right reveal">
+      <h1>We Don't Claim<br>Sustainability. We Prove It.</h1>
+      <div class="gold-rule"></div>
+      <p>Every media asset delivered by Essar Inc. is tagged with a transparent, self-attested Green Ledger. We map our data directly to ISO 14067 system boundaries, giving you the exact metrics to defend your Scope 3 compliance.</p>
+    </div>
+  </div>
+
+  <!-- COMPARATIVE BOUNDARY FRAMEWORK -->
+  <section>
+    <h2 class="section-title">The Comparative Boundary Framework</h2>
+    <div class="table">
+      <div class="table-head">
+        <div>Lifecycle Stage</div>
+        <div>Conventional Production Baseline (Logistics-Heavy)</div>
+        <div>Essar Inc. Digital Supply Chain (Optimized)</div>
+      </div>
+
+      <div class="row reveal" style="transition-delay:0s">
+        <div class="stage">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+          <div class="label">01 / Mobility<br>&amp; Travel</div>
+        </div>
+        <div class="conv"><ul>
+          <li>Flight emissions of crew to location</li>
+          <li>Fuel of heavy trucks &amp; passenger vans</li>
+        </ul></div>
+        <div class="opt col-opt"><ul>
+          <li>100% Zero-Travel.</li>
+          <li>Locally despatched creators.</li>
+        </ul></div>
+      </div>
+
+      <div class="row reveal" style="transition-delay:0s">
+        <div class="stage">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.4c.6.5 1 1.3 1 2.1V16h6v-1.5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 2z"/></svg>
+          <div class="label">02 / On-Site<br>Operations</div>
+        </div>
+        <div class="conv"><ul>
+          <li>Diesel generators for heavy lighting</li>
+          <li>Corporate hotel room &amp; catering waste</li>
+        </ul></div>
+        <div class="opt col-opt"><ul>
+          <li>Lean, ambient-light capture.</li>
+          <li>Zero hospitality or travel overhead.</li>
+        </ul></div>
+      </div>
+
+      <div class="row reveal" style="transition-delay:0s">
+        <div class="stage">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="2" y="4" width="20" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+          <div class="label">03 / Post-<br>Production</div>
+        </div>
+        <div class="conv"><ul>
+          <li>Centralised physical studios running 24/7</li>
+          <li>Commuting editing and rendering staff</li>
+        </ul></div>
+        <div class="opt col-opt"><ul>
+          <li>Secure, virtual Tier 3 cloud nodes.</li>
+          <li>Highly optimized processing metrics.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIDE THE GREEN LEDGER -->
+  <section>
+    <h2 class="section-title">Inside the Green Ledger</h2>
+    <div class="ledger-grid">
+      <div class="ledger-left">
+        <div class="ledger-item reveal" style="transition-delay:0s">
+          <div class="ledger-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+          <div>
+            <h4>Node Energy Tracking (kWh):</h4>
+            <p>The exact electrical consumption of the rendering servers, local workstations and cameras utilised during your project's specific lifecycle.</p>
+          </div>
+        </div>
+        <div class="ledger-item reveal" style="transition-delay:0s">
+          <div class="ledger-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <div>
+            <h4>Network Transfer File Sizes (GB):</h4>
+            <p>A transparent log of all data packets securely routed through our Tier 3 nodes, mapped to localised electrical grid emission factors.</p>
+          </div>
+        </div>
+        <div class="ledger-item reveal" style="transition-delay:0s">
+          <div class="ledger-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div>
+          <div>
+            <h4>Self-Attested Carbon Verification (kgCO₂e):</h4>
+            <p>A clean, downloadable certificate summarising your total project footprint, ready to be attached to your corporate ESG annual report or shown to European/US buyers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ledger-card reveal-zoom hover-lift">
+        <div class="ledger-card-head">
+          <div class="lc-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M17 8c0 4-5 8-5 8s-5-4-5-8a5 5 0 0 1 10 0z"/></svg> ESSAR INC. GREEN LEDGER</div>
+          <div class="lc-id">Project ID: EL-24-0587</div>
+        </div>
+
+<div class="stats-block">
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-label">Total Energy Consumed<br>(kWh)</div>
+            <div class="stat-value"><span data-count-to="18.64">0</span> <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Total Server Run-Time<br>(hours)</div>
+            <div class="stat-value"><span data-count-to="24.7">0</span> <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Total Data Transferred<br>(GB)</div>
+            <div class="stat-value"><span data-count-to="83.2">0</span> <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 17 18H6z"/></svg></div>
+          </div>
+        </div>
+
+        <div class="emissions-row">
+          <div class="emissions-box">
+            <div class="stat-label">Total Emissions (kgCO₂e)</div>
+            <div class="stat-value"><span data-count-to="4.12">0</span></div>
+          </div>
+          <div class="aligned-box">
+            <div class="aligned-label">ISO 14067 ALIGNED</div>
+            <div class="bars">
+              <div style="height:35%"></div><div style="height:55%"></div><div style="height:40%" class="hi"></div>
+              <div style="height:70%"></div><div style="height:50%"></div><div style="height:85%" class="hi"></div>
+              <div style="height:60%"></div><div style="height:95%" class="hi"></div><div style="height:65%"></div>
+              <div style="height:80%" class="hi"></div><div style="height:45%"></div><div style="height:75%" class="hi"></div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="details-row">
+          <div class="details-box">
+            <div class="drow"><span>Production Type</span><span>Brand Film</span></div>
+            <div class="drow"><span>Capture Locations</span><span>Local Nodes</span></div>
+            <div class="drow"><span>Total Energy Run-Time</span><span>24.7 Hours</span></div>
+            <div class="drow"><span>Data Transferred</span><span>83.2 GB</span></div>
+            <div class="drow"><span>Emission Factor (Grid)</span><span>0.502 kg CO₂e / kWh</span></div>
+            <div class="drow"><span>Total Emissions</span><span>4.12 kg CO₂e</span></div>
+          </div>
+          <div class="verify-box">
+            <div class="vt">SELF-ATTESTED<br>CARBON VERIFICATION</div>
+            <div class="seal">VERIFIED</div>
+            <p>This certificate summarises the environmental footprint of the above media asset.</p>
+            <div class="sig">Essar Inc.</div>
+            <div class="sig-sub">Authorised Signatory</div>
+          </div>
+        </div>
+
+        <a href="https://github.com/essarinc/Essar_Inc/raw/78e5ceacdd095132ab9e31cb83d4f6336bafed86/Assets/Green_Ledger_Certificate_EI.pdf" download class="dl-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16"/></svg> Download Green Ledger (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section style="padding-top:10px;">
+    <div class="guarantee reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 2 4 5v6c0 5.2 3.4 9.4 8 11 4.6-1.6 8-5.8 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div>
+        <h3>Our Guarantee: Built to be Audited.</h3>
+        <div class="gold-rule-thin"></div>
+        <p>Our data templates and system boundaries are meticulously designed to align with ISO 14067 (Carbon Footprint of Products) guidelines.</p>
+        <p>While we utilize our self-attested Green Ledger to keep your daily production costs agile and accessible, our data is 100% prepared for external scrutiny. If your international buyers, export boards or regulatory bodies require an official third-party stamp, our structured raw data sheets can be handed directly to an independent validation agency on-demand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTAs -->
+  <div class="cta-grid">
+
+    <a href="portfolio.html" class="cta-box dark hover-lift">
+      <h4>
+        View the Creative Proof:
+        <span class="accent">Our Cinematic Portfolio &amp; Anthem</span>
+      </h4>
+      <div class="arrow">→</div>
+      <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke-width="1">
+        <path d="M2 7h20v13H2z"/>
+        <path d="m2 7 3-4h3l-3 4M9 7l3-4h3l-3 4M16 7l3-4h3l-3 4"/>
+      </svg>
+    </a>
+
+    <a href="contact.html" class="cta-box green hover-lift">
+      <h4>Configure Your<br>Project &amp; Green Ledger</h4>
+      <div class="arrow">→</div>
+      <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke-width="1">
+        <path d="M12 2C9 6 7 9 7 13a5 5 0 0 0 10 0c0-4-2-7-5-11z"/>
+      </svg>
+    </a>
+
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <div class="footer-cta-wrap">
+      <a href="contact.html" class="btn btn-liquid-sage footer-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        Start Your Project
+        <span>&#8594;</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="portfolio.html">&#8250; About Us</a>
+        <a href="contact.html">&#8250; Start Your Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="faq.html">&#8250; FAQs</a>
+        <a href="#">&#8250; Request a Demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">&#8250; Privacy Policy</a>
+        <a href="terms-of-use.html">&#8250; Terms of Use</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap footer-social-row">
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Email Us</span>
+        <div class="about">care@essarinc.com</div>
+      </div>
+    </div>
+    <a class="social-icon" href="mailto:care@essarinc.com" aria-label="Email">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Email</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Chat on WhatsApp</span>
+        <div class="about">+91 72000 23969</div>
+      </div>
+    </div>
+    <a class="social-icon" href="https://wa.me/917200023969" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.4z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">WhatsApp</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Connect on LinkedIn</span>
+        <div class="about">Follow our company page</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1"/><path d="M8 11v6M12 17v-4a2 2 0 0 1 4 0v4M12 13v-2"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">LinkedIn</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Follow on Instagram</span>
+        <div class="about">Behind-the-scenes content</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Instagram</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Watch on YouTube</span>
+        <div class="about">Project showreels &amp; case studies</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="YouTube">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">YouTube</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Like on Facebook</span>
+        <div class="about">Updates &amp; announcements</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 21v-8h3l1-4h-4V7a1.5 1.5 0 0 1 1.5-1.5H19V2h-2.5A5.5 5.5 0 0 0 11 7.5V9H8v4h3v8"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Facebook</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Follow on Twitter</span>
+        <div class="about">Quick updates &amp; news</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="Twitter">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l16 16M20 4 4 20"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Twitter</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Call Us</span>
+        <div class="about">+91 72000 23969</div>
+      </div>
+    </div>
+    <a class="social-icon" href="tel:+917200023969" aria-label="Call Us">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 2 2.3z"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Call Us</span>
+    </a>
+  </div>
+
+</div>
+
+  <div class="wrap footer-bottom">
+    <div class="foot-brand">
+      <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+        <polygon points="237,47 185,10 75,97 128,135" fill="#2F3194"/>
+        <polygon points="238,147 185,111 76,200 127,237" fill="#2F3194"/>
+        <polygon points="186,212 141,250 190,286 236,248" fill="#EC1B24"/>
+      </svg>
+      © 2026 Essar Inc. All rights reserved.
+    </div>
+    <div>All digital campaigns are designed in strict alignment with ISO 14067 system boundaries.</div>
+  </div>
+</footer>
+
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const primaryNav = document.getElementById('primaryNav');
+  navToggle.addEventListener('click', () => {
+    const isOpen = primaryNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    primaryNav.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+<script>
+(function(){
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-zoom');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // Stat count-up
+  const counters = document.querySelectorAll('[data-count-to]');
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const end = parseFloat(el.getAttribute('data-count-to'));
+      const decimals = (el.getAttribute('data-count-to').split('.')[1] || '').length;
+      const suffix = el.getAttribute('data-count-suffix') || '';
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const val = end * (1 - Math.pow(1 - p, 3)); // ease-out
+        el.textContent = val.toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => countIO.observe(el));
+})();
+
+// shortcut
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js");
+}
+
+</script>
+
+
+<script>
+(function(){
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable text selection via drag
+  document.addEventListener('selectstart', function(e){
+    if (e.target.closest('.tooltip')) return; // allow selecting email/phone
+    e.preventDefault();
+  });
+
+  // Disable copy/cut (except inside the tooltip)
+  document.addEventListener('copy', function(e){
+    if (e.target.closest && e.target.closest('.tooltip')) return;
+    e.preventDefault();
+  });
+  document.addEventListener('cut', function(e){
+    if (e.target.closest && e.target.closest('.tooltip')) return;
+    e.preventDefault();
+  });
+
+  // Disable common devtools/view-source shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ['i','j','I','J'].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) e.preventDefault();
+  });
+
+  // Disable image/video dragging
+  document.addEventListener('dragstart', function(e){
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
+  });
+})();
+</script>
+
+
+</body>
+</html>
