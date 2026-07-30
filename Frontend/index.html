@@ -3,9 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Essar Inc. - Premium Brand Storytelling. Engineered for Global ESG Compliance.</title>
+<title>Essar Inc. - Premium Brand Storytelling, Engineered for Global ESG Compliance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Essar Inc." />
+<link rel="manifest" href="site.webmanifest" />
+<meta name="theme-color" content="#0b1f3a">
+
+
+<meta name="description" content="Essar Inc. replaces carbon-heavy film crews with a decentralized network of hyper-local creators and cloud-based editing hubs - delivering cinematic product media backed by a transparent, audit-ready sustainability framework.">
+<link rel="canonical" href="https://essarinc.com/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Essar Inc. - Premium Brand Storytelling. Engineered for Global ESG Compliance.">
+<meta property="og:description" content="Zero-travel production. Audit-ready sustainability. Cinematic results for global exporters and forward-thinking MSMEs,delivers premium, cinematic brand films through a zero-travel, decentralized production model - engineered for global ESG and Scope 3 compliance.">              
+<meta property="og:image" content="https://essarinc.com/og-home.png">
+<meta property="og:url" content="https://essarinc.com/index.html">
+<meta property="og:site_name" content="Essar Inc.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Essar Inc. - Premium Brand Storytelling. Engineered for Global ESG Compliance.">
+<meta name="twitter:description" content="A decentralized network of local creators and cloud-based editing - cinematic media, zero travel, fully audit-ready.">
+<meta name="twitter:image" content="https://essarinc.com/og-home.png">
 <style>
 /* ============================================================
    ESSAR INC. — SHARED DESIGN SYSTEM
@@ -16,7 +40,7 @@
   /* Brand palette */
   --deep-slate: #1E2229;
   --obsidian: #0B0C10;
-  --charcoal-panel: #17191D;
+  --charcoal-panel: #17191D; 
   --off-white: #F5F7F5;
   --warm-gold: #D4AF37;
   --warm-gold-soft: #E8C868;
@@ -54,7 +78,22 @@ body {
   background: var(--off-white);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
+/* Allow selection in form fields and in the footer tooltip
+   (email / phone number visitors need to copy) */
+input, textarea,
+.tooltip, .tooltip * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; margin: 0; padding: 0; }
@@ -112,7 +151,7 @@ input, textarea { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--off-white);
+  color: #2F3194;   /* exact logo navy */
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 1.05rem;
@@ -222,10 +261,55 @@ input, textarea { font-family: inherit; }
 }
 .btn:hover { transform: translateY(-1px); }
 
-.btn-outline-sage {
+/* Liquid-rise hover button — sage green variant */
+.btn-liquid-sage {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   border-color: var(--sage-green);
   color: var(--sage-green);
   background: transparent;
+}
+.btn-liquid-sage:active {
+  box-shadow: inset 3px 3px 10px rgba(0,0,0,0.35);
+}
+.btn-liquid-sage::before,
+.btn-liquid-sage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  border-radius: 50%;
+  display: block;
+  z-index: -1;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.btn-liquid-sage::before {
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(95, 173, 86, 0.15);
+}
+.btn-liquid-sage::after {
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: var(--sage-green);
+}
+.btn-liquid-sage:hover {
+  color: var(--obsidian);
+  border-color: var(--sage-green);
+}
+.btn-liquid-sage:hover::before {
+  top: -35%;
+  background-color: var(--sage-green);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+.btn-liquid-sage:hover::after {
+  top: -45%;
+  background-color: var(--sage-green);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 .btn-outline-sage:hover { background: var(--sage-green); color: var(--obsidian); }
 
@@ -347,6 +431,224 @@ input, textarea { font-family: inherit; }
     justify-content: space-between;
   }
 }
+
+
+
+
+
+
+/* ============================================================
+   SITE FOOTER — full version with CTA, link columns, socials
+   ============================================================ */
+.site-footer {
+  background: var(--obsidian);
+  border-top: 1px solid var(--hairline-dark);
+  padding-top: 56px;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+@media (min-width: 1024px) {
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-cta-wrap {
+  display: flex;
+  justify-content: center;   /* centers button horizontally, mobile+tablet */
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .footer-cta-wrap {
+    justify-content: center;  /* re-affirm centering inside its grid cell */
+    height: 100%;
+  }
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+@media (min-width: 640px) {
+  .footer-links { grid-template-columns: repeat(3, 1fr); gap: 48px; }
+}
+@media (min-width: 1024px) {
+  .footer-links {
+    padding-left: 48px;
+    border-left: 1px solid var(--hairline-dark);
+    justify-self: end;   /* ← keeps link columns pinned to the right side of their cell */
+  }
+}
+
+.footer-col h4 {
+  color: var(--off-white);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block;
+  color: var(--muted-silver);
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover { color: var(--sage-green-soft); }
+
+.footer-social-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* ← added: centers on mobile by default */
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--hairline-dark);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+@media (min-width: 768px) {
+  .footer-social-row { justify-content: center; gap: 40px; } /* ← changed from flex-start */
+}
+
+/* ============================================================
+   FOOTER SOCIAL — tooltip + layered hover icons
+   ============================================================ */
+.tooltip-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 20;
+  width: max-content;
+}
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: auto;
+}
+
+.tooltip .profile {
+  background: var(--charcoal-panel);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px 15px;
+  padding: 12px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.tooltip .about {
+  color: var(--muted-silver);
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+.tooltip .label {
+  color: var(--warm-gold-soft);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 64px;
+  text-decoration: none;
+}
+
+.layer {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.social-icon:hover .layer { transform: rotate(-20deg) skew(10deg); }
+
+.layer span {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--sage-green);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.social-icon:hover .layer span:nth-child(1) { opacity: 0.15; }
+.social-icon:hover .layer span:nth-child(2) { opacity: 0.35; transform: translate(3px, -3px); }
+.social-icon:hover .layer span:nth-child(3) { opacity: 0.6;  transform: translate(6px, -6px); }
+.social-icon:hover .layer span:nth-child(4) { opacity: 1;    transform: translate(9px, -9px); }
+
+.layer .icon-circle {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--sage-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--sage-green);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.social-icon:hover .icon-circle {
+  background: var(--sage-green);
+  color: var(--obsidian);
+}
+.icon-circle svg { width: 20px; height: 20px; }
+
+.icon-label {
+  font-size: 0.76rem;
+  color: var(--muted-silver);
+  text-align: center;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 24px 12px 40px;   /* ← added 12px left/right on mobile */
+  color: var(--muted-silver);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.footer-bottom .foot-brand { display: flex; align-items: center; gap: 10px; }
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 8px;        /* ← small extra gap from wrap edge */
+    padding-right: 8px;
+  }
+}
+
+/* Mobile: tighten social icon spacing so 4 fit per row cleanly */
+@media (max-width: 480px) {
+  .footer-social-row { justify-content: center; gap: 16px 20px; } /* ← changed from space-between */
+  .social-icon { width: 22%; }
+  .icon-circle { width: 46px; height: 46px; }
+}
+
 
 /* ============================================================
    SECTION RHYTHM
@@ -689,9 +991,9 @@ input, textarea { font-family: inherit; }
   <div class="wrap">
 <a href="index.html" class="brand">
   <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" class="brand-logo">
-    <polygon points="237,47 185,10 75,97 128,135" fill="#D4AF37"/>
-    <polygon points="238,147 185,111 76,200 127,237" fill="#D4AF37"/>
-    <polygon points="186,212 141,250 190,286 236,248" fill="#D4AF37"/>
+    <polygon points="237,47 185,10 75,97 128,135" fill="#2F3194"/>
+<polygon points="238,147 185,111 76,200 127,237" fill="#2F3194"/>
+<polygon points="186,212 141,250 190,286 236,248" fill="#EC1B24"/>
   </svg>
   ESSAR INC.
 </a>
@@ -711,8 +1013,8 @@ input, textarea { font-family: inherit; }
 <main>
   <!-- HERO -->
 <section class="hero-home">
-  <video class="hero-bg-video" autoplay muted loop playsinline poster="https://github.com/J-NoorulFathima/essarinc/raw/43bf636e800a08becde24cbe437d5dab726d421d/hero-cover.jpeg">
-    <source src="https://github.com/J-NoorulFathima/essarinc/raw/8553eb876e486afc1cb6abc55f883fed958c0920/Hero.mp4" type="video/mp4">
+  <video class="hero-bg-video" autoplay muted loop playsinline poster="hero-poster.jpeg">
+    <source src="hero-video.mp4" type="video/mp4">
   </video>
     <div class="wrap">
       <div class="hero-grid reveal">
@@ -720,8 +1022,8 @@ input, textarea { font-family: inherit; }
   <span class="type-reveal-line" data-delay="0">Premium Brand Storytelling.</span><br>
   <span class="type-reveal-line" data-delay="1">Engineered for Global ESG Compliance.</span>
 </h1>
-        <p class="sub-lead">Essar Inc. replaces carbon-heavy traditional film making with a decentralized network of hyper-local digital creators and cloud-based editing hubs. We deliver top-tier product media backed by a transparent sustainability framework.</p>
-        <a href="contact.html" class="btn btn-outline-sage">Request an Audit-Ready Project Quote</a>
+        <p class="sub-lead">Essar Inc. replaces carbon-heavy traditional film making with a decentralised network of hyper-local digital creators and cloud-based editing hubs. We deliver top-tier product media backed by a transparent sustainability framework.</p>
+        <a href="contact.html" class="btn btn-liquid-sage">Request an Audit-Ready Project Quote</a>
       </div>
     </div>
   </section>
@@ -784,7 +1086,7 @@ input, textarea { font-family: inherit; }
         <div class="process-col reveal" style="transition-delay:0.24s">
           <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 14l2 2 4-4"/></svg></div>
           <h3>03 / The Green Ledger Delivery</h3>
-          <p class="body-copy">You receive a cinematic, world-class promotional asset, permanently pinned with a transparent record of its operational energy footprint — fully prepared for the international screening.</p>
+          <p class="body-copy">You receive a cinematic, world-class promotional asset, permanently pinned with a transparent record of its operational energy footprint - fully prepared for the international screening.</p>
         </div>
       </div>
     </div>
@@ -910,16 +1212,194 @@ input, textarea { font-family: inherit; }
   </section>
 </main>
 
-<footer class="compliance-footer">
-  <div class="foot-brand">
-  <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-    <polygon points="237,47 185,10 75,97 128,135" fill="#D4AF37"/>
-    <polygon points="238,147 185,111 76,200 127,237" fill="#D4AF37"/>
-    <polygon points="186,212 141,250 190,286 236,248" fill="#D4AF37"/>
-  </svg>
-  © 2026 Essar Inc. All rights reserved.
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <div class="footer-cta-wrap">
+      <a href="contact.html" class="btn btn-liquid-sage footer-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        Start Your Project
+        <span>&#8594;</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="portfolio.html">&#8250; About Us</a>
+        <a href="contact.html">&#8250; Start Your Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="faq.html">&#8250; FAQs</a>
+        <a href="#">&#8250; Request a Demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">&#8250; Privacy Policy</a>
+        <a href="terms-of-use.html">&#8250; Terms of Use</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap footer-social-row">
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Email Us</span>
+        <div class="about">care@essarinc.com</div>
+      </div>
+    </div>
+    <a class="social-icon" href="mailto:care@essarinc.com" aria-label="Email">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Email</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Chat on WhatsApp</span>
+        <div class="about">+91 72000 23969</div>
+      </div>
+    </div>
+    <a class="social-icon" href="https://wa.me/917200023969" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.4z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">WhatsApp</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Connect on LinkedIn</span>
+        <div class="about">Follow our company page</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1"/><path d="M8 11v6M12 17v-4a2 2 0 0 1 4 0v4M12 13v-2"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">LinkedIn</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Follow on Instagram</span>
+        <div class="about">Behind-the-scenes content</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Instagram</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Watch on YouTube</span>
+        <div class="about">Project showreels &amp; case studies</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="YouTube">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">YouTube</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Like on Facebook</span>
+        <div class="about">Updates &amp; announcements</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 21v-8h3l1-4h-4V7a1.5 1.5 0 0 1 1.5-1.5H19V2h-2.5A5.5 5.5 0 0 0 11 7.5V9H8v4h3v8"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Facebook</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Follow on Twitter</span>
+        <div class="about">Quick updates &amp; news</div>
+      </div>
+    </div>
+    <a class="social-icon" href="#" target="_blank" rel="noopener" aria-label="Twitter">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l16 16M20 4 4 20"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Twitter</span>
+    </a>
+  </div>
+
+  <div class="tooltip-container">
+    <div class="tooltip">
+      <div class="profile">
+        <span class="label">Call Us</span>
+        <div class="about">+91 72000 23969</div>
+      </div>
+    </div>
+    <a class="social-icon" href="tel:+917200023969" aria-label="Call Us">
+      <div class="layer">
+        <span></span><span></span><span></span><span></span>
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 2 2.3z"/></svg>
+        </span>
+      </div>
+      <span class="icon-label">Call Us</span>
+    </a>
+  </div>
+
 </div>
-  <div>All digital campaigns are designed in strict alignment with ISO 14067 system boundaries.</div>
+
+  <div class="wrap footer-bottom">
+    <div class="foot-brand">
+      <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+        <polygon points="237,47 185,10 75,97 128,135" fill="#2F3194"/>
+        <polygon points="238,147 185,111 76,200 127,237" fill="#2F3194"/>
+        <polygon points="186,212 141,250 190,286 236,248" fill="#EC1B24"/>
+      </svg>
+      © 2026 Essar Inc. All rights reserved.
+    </div>
+    <div>All digital campaigns are designed in strict alignment with ISO 14067 system boundaries.</div>
+  </div>
 </footer>
 
 <script>
@@ -972,6 +1452,51 @@ input, textarea { font-family: inherit; }
   }, { threshold: 0.5 });
   counters.forEach(el => countIO.observe(el));
 })();
+
+// shortcut
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js");
+}
+
 </script>
+
+
+<script>
+(function(){
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable text selection via drag
+  document.addEventListener('selectstart', function(e){
+    if (e.target.closest('.tooltip')) return; // allow selecting email/phone
+    e.preventDefault();
+  });
+
+  // Disable copy/cut (except inside the tooltip)
+  document.addEventListener('copy', function(e){
+    if (e.target.closest && e.target.closest('.tooltip')) return;
+    e.preventDefault();
+  });
+  document.addEventListener('cut', function(e){
+    if (e.target.closest && e.target.closest('.tooltip')) return;
+    e.preventDefault();
+  });
+
+  // Disable common devtools/view-source shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ['i','j','I','J'].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) e.preventDefault();
+  });
+
+  // Disable image/video dragging
+  document.addEventListener('dragstart', function(e){
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
+  });
+})();
+</script>
+
 </body>
 </html>
