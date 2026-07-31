@@ -528,31 +528,105 @@ input, textarea { font-family: inherit; }
 @media (min-width: 768px) {
   .footer-social-row { justify-content: center; gap: 40px; }
 }
+
+/* ============================================================
+   FOOTER SOCIAL — tooltip + layered hover icons
+   ============================================================ */
+.tooltip-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 20;
+  width: max-content;
+}
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: auto;
+}
+
+.tooltip .profile {
+  background: var(--charcoal-panel);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px 15px;
+  padding: 12px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.tooltip .about {
+  color: var(--muted-silver);
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+.tooltip .label {
+  color: var(--warm-gold-soft);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 .social-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   width: 64px;
-  color: var(--sage-green);
+  text-decoration: none;
 }
-.icon-circle {
+
+.layer {
   width: 52px;
   height: 52px;
-  border-radius: 50%;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.social-icon:hover .layer { transform: rotate(-20deg) skew(10deg); }
+
+.layer span {
+  position: absolute;
+  inset: 0;
   border: 1.5px solid var(--sage-green);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.social-icon:hover .layer span:nth-child(1) { opacity: 0.15; }
+.social-icon:hover .layer span:nth-child(2) { opacity: 0.35; transform: translate(3px, -3px); }
+.social-icon:hover .layer span:nth-child(3) { opacity: 0.6;  transform: translate(6px, -6px); }
+.social-icon:hover .layer span:nth-child(4) { opacity: 1;    transform: translate(9px, -9px); }
+
+.layer .icon-circle {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--sage-green);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  background: transparent;
+  color: var(--sage-green);
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.icon-circle svg { width: 20px; height: 20px; }
 .social-icon:hover .icon-circle {
   background: var(--sage-green);
   color: var(--obsidian);
-  transform: translateY(-3px);
 }
-.icon-label { font-size: 0.76rem; color: var(--muted-silver); text-align: center; }
+.icon-circle svg { width: 20px; height: 20px; }
+
+.icon-label {
+  font-size: 0.76rem;
+  color: var(--muted-silver);
+  text-align: center;
+}
+
+
+  
 .footer-bottom {
   display: flex;
   flex-direction: column;
