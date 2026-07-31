@@ -750,6 +750,89 @@ input, textarea { font-family: inherit; }
 .hero-home h1 { color: var(--warm-gold); margin-bottom: 20px; }
 .hero-home .sub-lead { color: var(--muted-silver); margin-bottom: 30px; }
 
+/* PITCH AV BUTTON */
+.pitch-btn {
+  position: absolute;
+  top: 20px;
+  right: var(--gutter);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(11,12,16,0.55);
+  border: 1.5px solid var(--warm-gold);
+  color: var(--warm-gold);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.pitch-btn:hover { background: var(--warm-gold); color: var(--obsidian); transform: translateY(-2px); }
+.pitch-btn-icon {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--warm-gold);
+  color: var(--obsidian);
+  flex-shrink: 0;
+}
+.pitch-btn-icon svg { width: 11px; height: 11px; }
+
+@media (max-width: 640px) {
+  .pitch-btn { top: 14px; right: 14px; padding: 0; width: 42px; height: 42px; justify-content: center; }
+  .pitch-btn-label { display: none; }
+  .pitch-btn-icon { width: 100%; height: 100%; }
+  .pitch-btn-icon svg { width: 14px; height: 14px; }
+}
+
+/* VIDEO MODAL */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(11,12,16,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.video-modal.is-open { opacity: 1; pointer-events: auto; }
+.video-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: 88vh;
+  aspect-ratio: 9/16;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.video-modal-inner video { width: 100%; height: 100%; object-fit: contain; }
+.video-modal-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline-dark);
+  background: rgba(255,255,255,0.06);
+  color: var(--off-white);
+  display: flex; align-items: center; justify-content: center;
+}
+@media (max-width: 640px) {
+  .video-modal { padding: 12px; }
+  .video-modal-close { top: -40px; right: 0; width: 32px; height: 32px; }
+  .video-modal-inner { max-width: 92vw; max-height: 82vh; }
+}
+   
 .hero-text-outline {
   text-shadow:
     0 1px 3px rgba(0,0,0,0.5),
@@ -1016,6 +1099,12 @@ input, textarea { font-family: inherit; }
   <video class="hero-bg-video" autoplay muted loop playsinline poster="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/hero-poster.webp">
     <source src="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/hero-video.mp4" type="video/mp4">
   </video>
+   <button type="button" class="pitch-btn" id="pitchBtn" aria-label="Watch our pitch video">
+      <span class="pitch-btn-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+      </span>
+      <span class="pitch-btn-label">Pitch AV</span>
+    </button>
     <div class="wrap">
       <div class="hero-grid reveal">
         <h1 class="h1-display">
@@ -1402,6 +1491,19 @@ input, textarea { font-family: inherit; }
   </div>
 </footer>
 
+
+<div class="video-modal" id="pitchModal" aria-hidden="true">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="pitchModalClose" aria-label="Close video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <video id="pitchVideo" controls playsinline poster="hero-poster.jpeg">
+      <source src="pitch-video.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+
 <script>
   const navToggle = document.getElementById('navToggle');
   const primaryNav = document.getElementById('primaryNav');
@@ -1498,5 +1600,32 @@ if ("serviceWorker" in navigator) {
 })();
 </script>
 
+<script>
+(function(){
+  const pitchBtn = document.getElementById('pitchBtn');
+  const modal = document.getElementById('pitchModal');
+  const closeBtn = document.getElementById('pitchModalClose');
+  const video = document.getElementById('pitchVideo');
+
+  function openModal(){
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    video.play();
+  }
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  pitchBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+
+   
 </body>
 </html>
