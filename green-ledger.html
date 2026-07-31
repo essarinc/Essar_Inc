@@ -64,12 +64,16 @@
 @media (min-width: 1024px){ :root{ --gutter: 64px; } }
 
   *{box-sizing:border-box; margin:0; padding:0;}
+  html{
+    overflow-x: clip;
+  }
   body{
     background: radial-gradient(ellipse 1200px 700px at 15% 0%, #10190f 0%, var(--bg) 45%), var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     line-height: 1.55;
+    overflow-x: clip;
      -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
