@@ -849,10 +849,15 @@ input, textarea, select,
   }
 }
 
-/* Mobile: tighten social icon spacing so 4 fit per row cleanly */
-@media (max-width: 480px) {
-  .footer-social-row { justify-content: center; gap: 16px 20px; } /* ← changed from space-between */
-  .social-icon { width: 22%; }
+/* Mobile: force exactly 3 icons per row -> 3 / 3 / 2 for 8 icons */
+@media (max-width: 767px) {
+  .footer-social-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 24px 12px;
+  }
+  .social-icon { width: 100%; }
   .icon-circle { width: 46px; height: 46px; }
 }
 
