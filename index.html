@@ -144,6 +144,10 @@ input, textarea { font-family: inherit; }
   z-index: 100;
   background: var(--obsidian);
   border-bottom: 1px solid rgba(245, 247, 245, 0.08);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .site-header .wrap {
   display: flex;
@@ -1607,17 +1611,19 @@ if ("serviceWorker" in navigator) {
 
 <script>
 (function(){
-  let resizeTimer;
   function forceRepaint(){
-    document.body.style.display = 'none';
-    // eslint-disable-next-line no-unused-expressions
-    document.body.offsetHeight; // triggers reflow
-    document.body.style.display = '';
+    document.body.style.transform = 'translateZ(0)';
+    requestAnimationFrame(() => {
+      document.body.style.transform = '';
+    });
   }
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(forceRepaint, 150);
-  });
+  if (window.visualViewport) {
+    let vvTimer;
+    window.visualViewport.addEventListener('resize', () => {
+      clearTimeout(vvTimer);
+      vvTimer = setTimeout(forceRepaint, 100);
+    });
+  }
   window.addEventListener('orientationchange', () => {
     setTimeout(forceRepaint, 200);
   });
