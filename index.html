@@ -70,7 +70,11 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   margin: 0;
   font-family: var(--font-sans);
@@ -1600,6 +1604,27 @@ if ("serviceWorker" in navigator) {
 })();
 </script>
 
+
+<script>
+(function(){
+  let resizeTimer;
+  function forceRepaint(){
+    document.body.style.display = 'none';
+    // eslint-disable-next-line no-unused-expressions
+    document.body.offsetHeight; // triggers reflow
+    document.body.style.display = '';
+  }
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(forceRepaint, 150);
+  });
+  window.addEventListener('orientationchange', () => {
+    setTimeout(forceRepaint, 200);
+  });
+})();
+</script>
+
+                                        
 <script>
 (function(){
   const pitchBtn = document.getElementById('pitchBtn');
