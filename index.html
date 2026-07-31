@@ -81,7 +81,7 @@ body {
   color: var(--dark-charcoal-text);
   background: var(--off-white);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -717,7 +717,8 @@ input, textarea { font-family: inherit; }
 .hero-home {
   position: relative;
   color: var(--off-white);
-  overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
   background:
     radial-gradient(ellipse at 62% 45%, rgba(212,175,55,0.45), transparent 58%),
     linear-gradient(135deg, #2b2416, #14100b 55%, #0b0c10);
@@ -1604,28 +1605,6 @@ if ("serviceWorker" in navigator) {
   // Disable image/video dragging
   document.addEventListener('dragstart', function(e){
     if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
-  });
-})();
-</script>
-
-
-<script>
-(function(){
-  function forceRepaint(){
-    document.body.style.transform = 'translateZ(0)';
-    requestAnimationFrame(() => {
-      document.body.style.transform = '';
-    });
-  }
-  if (window.visualViewport) {
-    let vvTimer;
-    window.visualViewport.addEventListener('resize', () => {
-      clearTimeout(vvTimer);
-      vvTimer = setTimeout(forceRepaint, 100);
-    });
-  }
-  window.addEventListener('orientationchange', () => {
-    setTimeout(forceRepaint, 200);
   });
 })();
 </script>
