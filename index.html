@@ -70,18 +70,14 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--dark-charcoal-text);
   background: var(--off-white);
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
+  overflow-x: hidden;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -144,10 +140,6 @@ input, textarea { font-family: inherit; }
   z-index: 100;
   background: var(--obsidian);
   border-bottom: 1px solid rgba(245, 247, 245, 0.08);
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 .site-header .wrap {
   display: flex;
@@ -717,8 +709,7 @@ input, textarea { font-family: inherit; }
 .hero-home {
   position: relative;
   color: var(--off-white);
-  overflow: clip;
-  isolation: isolate;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 62% 45%, rgba(212,175,55,0.45), transparent 58%),
     linear-gradient(135deg, #2b2416, #14100b 55%, #0b0c10);
@@ -1609,7 +1600,6 @@ if ("serviceWorker" in navigator) {
 })();
 </script>
 
-                                        
 <script>
 (function(){
   const pitchBtn = document.getElementById('pitchBtn');
@@ -1639,3 +1629,4 @@ if ("serviceWorker" in navigator) {
    
 </body>
 </html>
+
