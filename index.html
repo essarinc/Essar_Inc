@@ -642,10 +642,10 @@ input, textarea { font-family: inherit; }
   }
 }
 
-/* Mobile: tighten social icon spacing so 4 fit per row cleanly */
+/* Mobile: force exactly 4 icons per row */
 @media (max-width: 480px) {
-  .footer-social-row { justify-content: center; gap: 16px 20px; } /* ← changed from space-between */
-  .social-icon { width: 22%; }
+  .footer-social-row { justify-content: center; gap: 20px 16px; }
+  .social-icon { width: calc(25% - 12px); }
   .icon-circle { width: 46px; height: 46px; }
 }
 
