@@ -479,6 +479,23 @@ input, textarea { font-family: inherit; }
   }
 }
 
+/* PHONE ONLY: force the CTA button to stay fully visible and centered,
+   independent of any horizontal scroll elsewhere on the page */
+@media (max-width: 767px) {
+  .site-footer { overflow-x: hidden; }
+  .footer-cta-wrap {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 var(--gutter);
+  }
+  .footer-cta.btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    align-self: center;
+  }
+}
+
 .footer-links {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
