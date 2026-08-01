@@ -282,8 +282,8 @@ input, textarea { font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--obsidian);
-  border-bottom: 1px solid rgba(245, 247, 245, 0.08);
+  background: var(--off-white);
+  border-bottom: 1px solid var(--hairline-light);
 }
 .site-header .wrap {
   display: flex;
@@ -311,16 +311,16 @@ input, textarea { font-family: inherit; }
   width: 40px;
   height: 40px;
   background: transparent;
-  border: 1px solid var(--hairline-dark);
+  border: 1px solid var(--hairline-light);
   border-radius: var(--radius-sm);
-  color: var(--off-white);
+  color: var(--dark-charcoal-text);
 }
 .nav-toggle svg { width: 20px; height: 20px; }
 
 .primary-nav {
   position: fixed;
   inset: var(--header-h) 0 0 0;
-  background: var(--obsidian);
+  background: var(--off-white);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -337,10 +337,10 @@ input, textarea { font-family: inherit; }
   pointer-events: auto;
 }
 .primary-nav a {
-  color: var(--muted-silver);
+  color: var(--dark-charcoal-text);
   font-size: 1.05rem;
   padding: 16px 4px;
-  border-bottom: 1px solid var(--hairline-dark);
+  border-bottom: 1px solid var(--hairline-light);
   letter-spacing: 0.02em;
 }
 .primary-nav a.is-active { color: var(--warm-gold); }
