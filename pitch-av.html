@@ -757,6 +757,12 @@ input, textarea { font-family: inherit; }
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
+
+/* Hide native fullscreen button on the pitch video (WebKit/Blink browsers) */
+video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+   
 </style>
 </head>
 <body class="page-pitch-av">
@@ -929,6 +935,17 @@ input, textarea { font-family: inherit; }
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   revealEls.forEach(el => io.observe(el));
 })();
+</script>
+
+<script>
+  const pitchVideo = document.querySelector('.section video');
+  if (pitchVideo) {
+    pitchVideo.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement === pitchVideo) {
+        document.exitFullscreen();
+      }
+    });
+  }
 </script>
 
 </body>
