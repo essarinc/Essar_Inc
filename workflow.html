@@ -1378,15 +1378,9 @@ vcFullscreen.addEventListener('click', () => {
 });
 
 
-document.getElementById('viewFullscreenBtn').addEventListener('click', () => {
-  if (vid.requestFullscreen) {
-    vid.requestFullscreen();
-  } else if (vid.webkitRequestFullscreen) {
-    vid.webkitRequestFullscreen(); // Safari
-  } else if (vid.webkitEnterFullscreen) {
-    vid.webkitEnterFullscreen(); // iOS Safari (video only, not general elements)
-  }
-  vid.play(); // start playback once fullscreen opens
+document.getElementById('viewFullscreenBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  // Fullscreen disabled — button kept visually but inactive
 });
 
 // shortcut
