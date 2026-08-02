@@ -643,11 +643,18 @@ input, textarea { font-family: inherit; }
   flex-direction: column;
   gap: 12px;
   align-items: flex-start;
-  padding: 24px 12px 40px;   /* ← added 12px left/right on mobile */
-  color: var(--muted-silver);
+  padding: 24px 12px 40px;
+  color: var(--dark-charcoal-text);
   font-size: 0.78rem;
   line-height: 1.6;
 }
+
+
+.footer-bottom-outer {
+  background: var(--off-white);
+  border-top: 1px solid var(--hairline-light);
+}
+
 .footer-bottom .foot-brand { display: flex; align-items: center; gap: 10px; }
 @media (min-width: 768px) {
   .footer-bottom {
@@ -1410,7 +1417,7 @@ input, textarea { font-family: inherit; }
   </div>
 
 </div>
-
+  <div class="footer-bottom-outer">
   <div class="wrap footer-bottom">
     <div class="foot-brand">
       <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
@@ -1421,6 +1428,7 @@ input, textarea { font-family: inherit; }
       © 2025 Essar Inc. All rights reserved.
     </div>
     <div>All digital campaigns are designed in strict alignment with ISO 14067 system boundaries.</div>
+  </div>
   </div>
 </footer>
 
