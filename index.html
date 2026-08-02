@@ -1128,12 +1128,12 @@ input, textarea { font-family: inherit; }
   <video class="hero-bg-video" autoplay muted loop playsinline poster="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/hero-poster.webp">
     <source src="https://github.com/essarinc/Essar_Inc/raw/4d73563a141947a4041247b44a40cb988fd16992/Assets/hero-video.mp4" type="video/mp4">
   </video>
-   <button type="button" class="pitch-btn" id="pitchBtn" aria-label="Watch our pitch video">
+   <a href="pitch-av.html" class="pitch-btn" aria-label="Watch our pitch video">
       <span class="pitch-btn-icon">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
       </span>
       <span class="pitch-btn-label">Pitch AV</span>
-    </button>
+    </a>
     <div class="wrap">
       <div class="hero-grid reveal">
         <h1 class="h1-display">
@@ -1433,18 +1433,6 @@ input, textarea { font-family: inherit; }
 </footer>
 
 
-<div class="video-modal" id="pitchModal" aria-hidden="true">
-  <div class="video-modal-inner">
-    <button class="video-modal-close" id="pitchModalClose" aria-label="Close video">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
-    </button>
-    <video id="pitchVideo" controls playsinline poster="hero-poster.jpeg">
-      <source src="https://github.com/essarinc/Essar_Inc/raw/5ea628d9273247dd3a2b5da9adcbd6cf1eb0efc7/Assets/Pitch-AV.mp4" type="video/mp4">
-    </video>
-  </div>
-</div>
-
-
 <script>
   const navToggle = document.getElementById('navToggle');
   const primaryNav = document.getElementById('primaryNav');
@@ -1538,32 +1526,6 @@ if ("serviceWorker" in navigator) {
   document.addEventListener('dragstart', function(e){
     if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
   });
-})();
-</script>
-
-<script>
-(function(){
-  const pitchBtn = document.getElementById('pitchBtn');
-  const modal = document.getElementById('pitchModal');
-  const closeBtn = document.getElementById('pitchModalClose');
-  const video = document.getElementById('pitchVideo');
-
-  function openModal(){
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    video.play();
-  }
-  function closeModal(){
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    video.pause();
-    video.currentTime = 0;
-  }
-
-  pitchBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
 </script>
 
