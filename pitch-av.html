@@ -789,10 +789,12 @@ input, textarea { font-family: inherit; }
       <div class="reveal">
         <span class="eyebrow" style="color:var(--warm-gold-soft);">Pitch AV</span>
 
-              <video controls playsinline poster="hero-poster.jpeg"
-               style="width:100%; max-width:280px; aspect-ratio:9/16; object-fit:cover; border-radius:var(--radius-md); border:1px solid rgba(212,175,55,0.18); display:block; margin:0 auto; max-height:70vh;">
-          <source src="https://github.com/essarinc/Essar_Inc/raw/5ea628d9273247dd3a2b5da9adcbd6cf1eb0efc7/Assets/Pitch-AV.mp4" type="video/mp4">
-        </video>
+             <video controls playsinline poster="hero-poster.jpeg"
+       controlsList="nodownload noremoteplayback noplaybackrate"
+       disablePictureInPicture
+       style="width:100%; max-width:280px; aspect-ratio:9/16; object-fit:cover; border-radius:var(--radius-md); border:1px solid rgba(212,175,55,0.18); display:block; margin:0 auto; max-height:70vh;">
+  <source src="https://github.com/essarinc/Essar_Inc/raw/5ea628d9273247dd3a2b5da9adcbd6cf1eb0efc7/Assets/Pitch-AV.mp4" type="video/mp4">
+</video>
 
         
           <div style="margin-top:36px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
