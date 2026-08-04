@@ -1059,6 +1059,42 @@ video::-webkit-media-controls-fullscreen-button {
   });
 })();
 </script>
+
+<script>
+(function(){
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable text selection via drag
+  document.addEventListener('selectstart', function(e){
+    if (e.target.closest('.tooltip') || e.target.closest('#cookieConsent')) return;
+    e.preventDefault();
+  });
+
+  // Disable copy/cut (except inside the tooltip and cookie banner)
+  document.addEventListener('copy', function(e){
+    if (e.target.closest && (e.target.closest('.tooltip') || e.target.closest('#cookieConsent'))) return;
+    e.preventDefault();
+  });
+  document.addEventListener('cut', function(e){
+    if (e.target.closest && (e.target.closest('.tooltip') || e.target.closest('#cookieConsent'))) return;
+    e.preventDefault();
+  });
+
+  // Disable common devtools/view-source shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ['i','j','I','J'].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) e.preventDefault();
+  });
+
+  // Disable image/video dragging
+  document.addEventListener('dragstart', function(e){
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
+  });
+})();
+</script>
    
 </body>
 </html>
