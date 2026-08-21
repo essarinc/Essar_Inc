@@ -137,7 +137,40 @@ input, textarea,           /* only if this page has form fields */
 .brand svg { height: 26px; width: auto; flex-shrink: 0; }
 @media (min-width: 1024px) { .brand svg { height: 30px; width: auto; } }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+@media (min-width: 1024px) {
+  .header-right { gap: 36px; }
+}
+
+.header-pitch-btn {
+  order: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  background: #2F3194;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.header-pitch-btn:hover { background: #24266f; transform: translateY(-1px); }
+.header-pitch-icon {
+  width: 18px; height: 18px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.header-pitch-icon svg { width: 12px; height: 12px; }
+
 .nav-toggle {
+  order: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,6 +244,15 @@ input, textarea,           /* only if this page has form fields */
   .primary-nav a:hover::after,
   .primary-nav a.is-active::after { right: 0; }
   .primary-nav a.is-active { color: var(--warm-gold); }
+
+@media (min-width: 1024px) {
+  .header-pitch-btn { order: 2; padding: 11px 22px; }
+}
+@media (max-width: 640px) {
+  .header-pitch-btn { padding: 8px 14px; font-size: 0.78rem; }
+  .header-pitch-icon { width: 16px; height: 16px; }
+  .header-pitch-icon svg { width: 10px; height: 10px; }
+}
 }
 
   /* ---------- HERO ---------- */
@@ -868,6 +910,13 @@ input, textarea,           /* only if this page has form fields */
   </svg>
   ESSAR INC.
 </a>
+
+
+    <div class="header-right">
+      <a href="pitch-av.html" class="header-pitch-btn" aria-label="Watch our pitch video">
+  <span class="header-pitch-label">Pitch AV 2.0</span>
+</a>
+
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -879,6 +928,7 @@ input, textarea,           /* only if this page has form fields */
       <a href="contact.html">Contact</a>
     </nav>
   </div>
+ </div>
 </header>
 
 <div class="wrap">
