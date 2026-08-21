@@ -174,6 +174,59 @@ input, textarea { font-family: inherit; }
 }
 .nav-toggle svg { width: 20px; height: 20px; }
 
+
+.header-actions{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-pitch-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #2F3194;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.header-pitch-btn:hover{
+  background: #24266f;
+  transform: translateY(-1px);
+}
+
+@media (min-width: 1024px){
+  .header-pitch-btn{
+    font-size: 0.9rem;
+    padding: 11px 22px;
+  }
+}
+
+.header-pitch-link{
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--dark-charcoal-text);
+  white-space: nowrap;
+  padding: 6px 2px;
+  transition: color 0.2s ease;
+}
+.header-pitch-link:hover{
+  color: #2F3194;
+}
+
+@media (min-width: 1024px){
+  .header-pitch-link{
+    font-size: 0.9rem;
+  }
+}
+
+
 .primary-nav {
   position: fixed;
   inset: var(--header-h) 0 0 0;
@@ -1180,19 +1233,18 @@ input, textarea { font-family: inherit; }
 </style>
 </head>
 <body class="page-home">
+
 <header class="site-header">
   <div class="wrap">
-<a href="index.html" class="brand">
-  <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" class="brand-logo">
-    <polygon points="237,47 185,10 75,97 128,135" fill="#2F3194"/>
-<polygon points="238,147 185,111 76,200 127,237" fill="#2F3194"/>
-<polygon points="186,212 141,250 190,286 236,248" fill="#EC1B24"/>
-  </svg>
-  ESSAR INC.
-</a>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 320 297" xmlns="http://www.w3.org/2000/svg" class="brand-logo">
+        <polygon points="237,47 185,10 75,97 128,135" fill="#2F3194"/>
+        <polygon points="238,147 185,111 76,200 127,237" fill="#2F3194"/>
+        <polygon points="186,212 141,250 190,286 236,248" fill="#EC1B24"/>
+      </svg>
+      ESSAR INC.
+    </a>
+
     <nav class="primary-nav" id="primaryNav">
       <a href="index.html" class="is-active">Home</a>
       <a href="workflow.html">Workflow</a>
@@ -1200,6 +1252,14 @@ input, textarea { font-family: inherit; }
       <a href="portfolio.html">About Us</a>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <div class="header-actions">
+  <a href="pitch-av.html" class="header-pitch-btn">Pitch AV</a>
+  <a href="pitch-av-2.html" class="header-pitch-btn">Pitch AV 2.0</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</div>
   </div>
 </header>
 
@@ -1643,4 +1703,3 @@ if ("serviceWorker" in navigator) {
    
 </body>
 </html>
-
