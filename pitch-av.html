@@ -909,12 +909,43 @@ video::-webkit-media-controls-fullscreen-button {
 }
 .pdf-scroll canvas {
   display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto 8px;
+  margin: 0 0 8px;
   background: #fff;
   pointer-events: none;      /* blocks drag/save on the pages */
 }
+
+/* zoom buttons */
+.pdf-zoom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 5;
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  background: rgba(11,12,16,0.82);
+  border: 1px solid rgba(212,175,55,0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.pdf-zoom button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--warm-gold-soft);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pdf-zoom button:hover:not(:disabled) { background: var(--warm-gold); color: var(--obsidian); }
+.pdf-zoom button:disabled { opacity: 0.35; cursor: default; }
+.pdf-zoom .zoom-reset { font-size: 0.62rem; letter-spacing: 0.04em; width: 38px; border-radius: 999px; }
 .pdf-status {
   color: #555;
   font-size: 0.8rem;
@@ -960,9 +991,14 @@ video::-webkit-media-controls-fullscreen-button {
         <div class="pitch-layout">
 
           <!-- LEFT: PDF 1 (scrollable) -->
-                    <div class="pitch-box">
+                              <div class="pitch-box">
             <div class="pdf-scroll" data-pdf="https://raw.githubusercontent.com/essarinc/Essar_Inc/6630ecf5f1dfb51f983aa18c2cbfb255443118e2/Assets/EBRD%20-%20Pilot%20Uzbek%20Renewable%20Hydrogen%20%20Project%20Summary%20-%20PSD%2055025.pdf">
               <div class="pdf-status">Loading PDF…</div>
+            </div>
+            <div class="pdf-zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+              <button type="button" data-zoom="reset" class="zoom-reset" aria-label="Reset zoom">100%</button>
+              <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
             </div>
           </div>
 
@@ -976,9 +1012,14 @@ video::-webkit-media-controls-fullscreen-button {
           </div>
 
           <!-- RIGHT: PDF 2 (scrollable) -->
-                    <div class="pitch-box">
+                              <div class="pitch-box">
             <div class="pdf-scroll" data-pdf="https://raw.githubusercontent.com/essarinc/Essar_Inc/6630ecf5f1dfb51f983aa18c2cbfb255443118e2/Assets/EBRD%20-%20Uzbek%20Green%20Hydrogen%20Project%20Summary%20-%20PSD%205461%20%281%29.pdf">
               <div class="pdf-status">Loading PDF…</div>
+            </div>
+            <div class="pdf-zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+              <button type="button" data-zoom="reset" class="zoom-reset" aria-label="Reset zoom">100%</button>
+              <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
             </div>
           </div>
 
@@ -1203,26 +1244,90 @@ video::-webkit-media-controls-fullscreen-button {
   pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+  const MIN_ZOOM = 1, MAX_ZOOM = 3, STEP = 0.5;
+
   document.querySelectorAll('.pdf-scroll[data-pdf]').forEach(async (box) => {
-    try {
-      const pdf = await pdfjsLib.getDocument(box.dataset.pdf).promise;
-      box.innerHTML = '';
-      const cssWidth = box.clientWidth - 16;          // minus padding
+    const holder   = box.parentElement;
+    const btnIn    = holder.querySelector('[data-zoom="in"]');
+    const btnOut   = holder.querySelector('[data-zoom="out"]');
+    const btnReset = holder.querySelector('[data-zoom="reset"]');
+
+    let pdf = null, zoom = 1, token = 0;
+
+    function updateButtons() {
+      if (btnIn)    btnIn.disabled  = zoom >= MAX_ZOOM;
+      if (btnOut)   btnOut.disabled = zoom <= MIN_ZOOM;
+      if (btnReset) btnReset.textContent = Math.round(zoom * 100) + '%';
+    }
+
+    async function render() {
+      const my = ++token;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
+      // remember where the reader is, so zooming doesn't jump
+      const ratioY = box.scrollHeight ? box.scrollTop / box.scrollHeight : 0;
+      const ratioX = box.scrollWidth ? (box.scrollLeft + box.clientWidth / 2) / box.scrollWidth : 0.5;
+
+      const baseWidth = box.clientWidth - 16;        // minus padding
+      box.innerHTML = '';
+      const jobs = [];
+
+      // 1) lay out every page at its final size first
       for (let n = 1; n <= pdf.numPages; n++) {
         const page = await pdf.getPage(n);
+        if (my !== token) return;
         const base = page.getViewport({ scale: 1 });
-        const scale = (cssWidth / base.width) * dpr;
-        const vp = page.getViewport({ scale });
+        const cssW = baseWidth * zoom;
+        const cssH = base.height * (cssW / base.width);
 
         const canvas = document.createElement('canvas');
-        canvas.width = vp.width;
-        canvas.height = vp.height;
+        canvas.style.width  = cssW + 'px';
+        canvas.style.height = cssH + 'px';
+        canvas.width  = Math.floor(cssW * dpr);
+        canvas.height = Math.floor(cssH * dpr);
         box.appendChild(canvas);
 
-        await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+        jobs.push({ page, canvas, scale: (cssW / base.width) * dpr });
       }
+
+      // 2) restore scroll position
+      box.scrollTop  = ratioY * box.scrollHeight;
+      box.scrollLeft = Math.max(0, ratioX * box.scrollWidth - box.clientWidth / 2);
+
+      // 3) draw the pages
+      for (const job of jobs) {
+        if (my !== token) return;
+        const vp = job.page.getViewport({ scale: job.scale });
+        await job.page.render({
+          canvasContext: job.canvas.getContext('2d'),
+          viewport: vp
+        }).promise;
+      }
+    }
+
+    function setZoom(z) {
+      zoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z));
+      updateButtons();
+      render();
+    }
+
+    if (btnIn)    btnIn.addEventListener('click',    () => setZoom(zoom + STEP));
+    if (btnOut)   btnOut.addEventListener('click',   () => setZoom(zoom - STEP));
+    if (btnReset) btnReset.addEventListener('click', () => setZoom(1));
+
+    try {
+      pdf = await pdfjsLib.getDocument(box.dataset.pdf).promise;
+      updateButtons();
+      await render();
+
+      // re-render if the screen size changes (rotate phone, resize window)
+      let lastW = box.clientWidth, timer;
+      window.addEventListener('resize', () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          if (box.clientWidth !== lastW) { lastW = box.clientWidth; render(); }
+        }, 250);
+      });
     } catch (err) {
       box.innerHTML = '<div class="pdf-status">Unable to load this PDF.</div>';
       console.error(err);
