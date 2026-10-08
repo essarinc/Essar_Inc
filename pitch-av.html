@@ -895,6 +895,32 @@ video::-webkit-media-controls-fullscreen-button {
 @media (min-width: 1024px) {
   .pitch-layout { gap: 40px; }
 }
+
+/* ---------- PDF viewer (PDF.js, no download) ---------- */
+.pdf-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: #e9ebe9;
+  padding: 8px;
+  scrollbar-width: thin;
+}
+.pdf-scroll canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 8px;
+  background: #fff;
+  pointer-events: none;      /* blocks drag/save on the pages */
+}
+.pdf-status {
+  color: #555;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 24px 8px;
+}
    
 </style>
 
@@ -934,8 +960,10 @@ video::-webkit-media-controls-fullscreen-button {
         <div class="pitch-layout">
 
           <!-- LEFT: PDF 1 (scrollable) -->
-          <div class="pitch-box">
-            <iframe src="https://github.com/essarinc/Essar_Inc/raw/6630ecf5f1dfb51f983aa18c2cbfb255443118e2/Assets/EBRD%20-%20Pilot%20Uzbek%20Renewable%20Hydrogen%20%20Project%20Summary%20-%20PSD%2055025.pdf" title="Essar Inc. PDF 1" loading="lazy"></iframe>
+                    <div class="pitch-box">
+            <div class="pdf-scroll" data-pdf="https://raw.githubusercontent.com/essarinc/Essar_Inc/6630ecf5f1dfb51f983aa18c2cbfb255443118e2/Assets/EBRD%20-%20Pilot%20Uzbek%20Renewable%20Hydrogen%20%20Project%20Summary%20-%20PSD%2055025.pdf">
+              <div class="pdf-status">Loading PDF…</div>
+            </div>
           </div>
 
           <!-- CENTER: VIDEO -->
@@ -948,8 +976,10 @@ video::-webkit-media-controls-fullscreen-button {
           </div>
 
           <!-- RIGHT: PDF 2 (scrollable) -->
-          <div class="pitch-box">
-            <iframe src="https://github.com/essarinc/Essar_Inc/raw/6630ecf5f1dfb51f983aa18c2cbfb255443118e2/Assets/EBRD%20-%20Uzbek%20Green%20Hydrogen%20Project%20Summary%20-%20PSD%205461%20(1).pdf" title="Essar Inc. PDF 2" loading="lazy"></iframe>
+                    <div class="pitch-box">
+            <div class="pdf-scroll" data-pdf="https://raw.githubusercontent.com/essarinc/Essar_Inc/6630ecf5f1dfb51f983aa18c2cbfb255443118e2/Assets/EBRD%20-%20Uzbek%20Green%20Hydrogen%20Project%20Summary%20-%20PSD%205461%20%281%29.pdf">
+              <div class="pdf-status">Loading PDF…</div>
+            </div>
           </div>
 
         </div>
@@ -1162,6 +1192,41 @@ video::-webkit-media-controls-fullscreen-button {
   // Disable image/video dragging
   document.addEventListener('dragstart', function(e){
     if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
+  });
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+  if (!window.pdfjsLib) return;
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  document.querySelectorAll('.pdf-scroll[data-pdf]').forEach(async (box) => {
+    try {
+      const pdf = await pdfjsLib.getDocument(box.dataset.pdf).promise;
+      box.innerHTML = '';
+      const cssWidth = box.clientWidth - 16;          // minus padding
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      for (let n = 1; n <= pdf.numPages; n++) {
+        const page = await pdf.getPage(n);
+        const base = page.getViewport({ scale: 1 });
+        const scale = (cssWidth / base.width) * dpr;
+        const vp = page.getViewport({ scale });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = vp.width;
+        canvas.height = vp.height;
+        box.appendChild(canvas);
+
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+      }
+    } catch (err) {
+      box.innerHTML = '<div class="pdf-status">Unable to load this PDF.</div>';
+      console.error(err);
+    }
   });
 })();
 </script>
