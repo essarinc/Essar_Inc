@@ -844,62 +844,56 @@ video::-webkit-media-controls-fullscreen-button {
   #cookieConsent { left: 16px; right: 16px; width: auto; }
 }
 
-/* ---------- PITCH AV: PDF + VIDEO LAYOUT ---------- */
+/* ---------- PITCH AV: PDF | VIDEO | PDF LAYOUT ---------- */
+.pitch-center { text-align: center; }
+
 .pitch-layout {
-  display: flex;
-  flex-direction: column;      /* phone/tablet: stacked */
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: 1fr;          /* phone: stacked */
+  justify-items: center;
+  gap: 24px;
   width: 100%;
 }
-.pitch-pdf {
+
+/* all three boxes share the same 9:16 shape */
+.pitch-box {
   position: relative;
   width: 100%;
-  max-width: 560px;
-  height: 70vh;
-  min-height: 420px;
-  background: #fff;
-  border: 1px solid rgba(212,175,55,0.18);
+  max-width: 280px;
+  aspect-ratio: 9 / 16;
   border-radius: var(--radius-md);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(212,175,55,0.18);
+  overflow: hidden;
+  background: #fff;
 }
-.pitch-pdf iframe {
+.pitch-box iframe,
+.pitch-box video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
-}
-.pitch-video-box {
-  width: 100%;
-  max-width: 280px;
-}
-.pitch-video-box video {
-  width: 100%;
-  aspect-ratio: 9/16;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(212,175,55,0.18);
   display: block;
 }
-.pitch-center { text-align: center; }
+.pitch-box video {
+  object-fit: cover;
+  background: #000;
+}
 
-/* Laptop / large tablet: PDF left, video right */
-@media (min-width: 900px) {
+/* phone: video first, then the two PDFs */
+.pitch-box.is-video { order: -1; }
+
+/* tablet and laptop: PDF | VIDEO | PDF in one row */
+@media (min-width: 768px) {
   .pitch-layout {
-    flex-direction: row;
-    align-items: stretch;
-    gap: 40px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    align-items: start;
   }
-  .pitch-pdf {
-    flex: 1 1 0;
-    height: auto;
-    min-height: 0;
-    max-width: 560px;
-  }
-  .pitch-video-box { flex: 0 0 280px; }
+  .pitch-box.is-video { order: 0; }
+}
+@media (min-width: 1024px) {
+  .pitch-layout { gap: 40px; }
 }
    
 </style>
@@ -931,7 +925,7 @@ video::-webkit-media-controls-fullscreen-button {
 
 <main>
   <section class="section" style="background:var(--obsidian); color:var(--off-white); padding-top:56px;">
-        <div class="wrap" style="max-width:1100px;">
+            <div class="wrap" style="max-width:1100px;">
       <div class="reveal">
         <div class="pitch-center">
           <span class="eyebrow" style="color:var(--warm-gold-soft);">Pitch AV</span>
@@ -939,18 +933,23 @@ video::-webkit-media-controls-fullscreen-button {
 
         <div class="pitch-layout">
 
-          <!-- LEFT: PDF (scrollable) -->
-          <div class="pitch-pdf">
-            <iframe src="Assets/your-file.pdf#toolbar=0&navpanes=0" title="Essar Inc. PDF"></iframe>
+          <!-- LEFT: PDF 1 (scrollable) -->
+          <div class="pitch-box">
+            <iframe src="PASTE_PDF_1_LINK_HERE" title="Essar Inc. PDF 1" loading="lazy"></iframe>
           </div>
 
-          <!-- RIGHT: VIDEO -->
-          <div class="pitch-video-box">
+          <!-- CENTER: VIDEO -->
+          <div class="pitch-box is-video">
             <video controls playsinline poster="https://github.com/essarinc/Essar_Inc/raw/10b5168f245a2c97e0f0c90521962f350cc46991/Assets/pitch-av-2.2.webp"
               controlsList="nodownload noremoteplayback noplaybackrate"
               disablePictureInPicture>
               <source src="https://github.com/essarinc/Essar_Inc/raw/d670f78296123ade397ee919273ebc0dcb30585e/Assets/pitch-av-2.2.mp4" type="video/mp4">
             </video>
+          </div>
+
+          <!-- RIGHT: PDF 2 (scrollable) -->
+          <div class="pitch-box">
+            <iframe src="PASTE_PDF_2_LINK_HERE" title="Essar Inc. PDF 2" loading="lazy"></iframe>
           </div>
 
         </div>
